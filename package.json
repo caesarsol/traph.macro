@@ -19,7 +19,7 @@
 		"dist/macro.js"
 	],
 	"keywords": [
-		"babel-macro",
+		"babel-macros",
 		"object",
 		"transformation",
 		"graph",

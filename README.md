@@ -7,6 +7,8 @@ A [`babel-macros`](https://github.com/kentcdodds/babel-macros) version of
 a functional utility to transform Objects easily,
 leveraging object getters and graphs.
 
+The performance of the macro should be greatly improved over the performance of the function.
+
 ## Install
 
 ```
@@ -17,7 +19,8 @@ $ npm install traph.macro
 
 Assuming [`babel-macros`](https://github.com/kentcdodds/babel-macros)
 is installed and configured,
-the `traph` macro is identical to the [`traph`](https://github.com/caesarsol/traph/) function.
+the `traph` macro has the same usage of the
+[`traph` function](https://github.com/caesarsol/traph/).
 
 Input:
 
@@ -58,7 +61,8 @@ const transformed = stats({ values: [1,2,3,4,5,6,7] })
 
 ## API
 
-The API is identical to the [`traph`](https://github.com/caesarsol/traph/) utility.
+The API is identical to the [`traph` function](https://github.com/caesarsol/traph/),
+with the exception of the `lazy` mode. The mode is **always lazy** now.
 
 ## License
 
