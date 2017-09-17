@@ -26,10 +26,10 @@
 		"traph"
 	],
 	"dependencies": {
-		"babel-macros": "^1.0.2"
+		"babel-macros": "^1.0.2",
+		"babel-plugin-ast-literal": "^0.5.4"
 	},
 	"devDependencies": {
-		"babel-cli": "^6.26.0",
-		"babel-plugin-ast-literal": "^0.5.4"
+		"babel-cli": "^6.26.0"
 	}
 }
