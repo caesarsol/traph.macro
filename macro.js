@@ -1,54 +1,26 @@
+/* global expr, stmt */  /* = require('babel-plugin-ast-literal') */
 const t = require('babel-types')
 const { createMacro, MacroError } = require('babel-macros')
 
 function funcRetObj(props) {
-  // const t = function (i) {
-  //   return Object.create({
-  //     <<props>>
-  //   })
-  // }
-  return t.functionExpression(null, [t.identifier('i')], t.blockStatement([
-    t.returnStatement(t.callExpression(
-      t.memberExpression(t.identifier('Object'), t.identifier('create')),
-      [t.objectExpression(props)],
-    ))
-  ]))
+  return expr`
+    function (i) {
+      return Object.create( ${t.objectExpression(props)} )
+    }
+  `
 }
 
 function getter(name, retVal) {
-  // get <<name>>() {
-  //   const o = this
-  //   const v = <<retVal>>
-  //   Object.defineProperty(this, `${name}`, { value: v, enumerable: true })
-  //   return v
-  // }
-  return t.objectMethod('get', t.identifier(name), [], t.blockStatement([
-    // const o = this
-    t.variableDeclaration('const', [
-      t.variableDeclarator(t.identifier('o'), t.thisExpression())
-    ]),
-
-    // const v = <<retVal>>
-    t.variableDeclaration('const', [
-      t.variableDeclarator(t.identifier('v'), retVal)
-    ]),
-
-    // Object.defineProperty(this, `${name}`, { value: v, enumerable: true })
-    t.expressionStatement(t.callExpression(
-      t.memberExpression(t.identifier('Object'), t.identifier('defineProperty')),
-      [
-        t.thisExpression(),
-        t.stringLiteral(name),
-        t.objectExpression([
-          t.objectProperty(t.identifier('value'), t.identifier('v')),
-          t.objectProperty(t.identifier('enumerable'), t.booleanLiteral(true)),
-        ])
-      ],
-    )),
-
-    // return v
-    t.returnStatement(t.identifier('v')),
-  ]))
+  return (expr`
+    {
+      get ${name}() {
+        const o = this;
+        const v = ${retVal};
+        Object.defineProperty(this, ${name}, { value: v, enumerable: true });
+        return v;
+      }
+    }
+  `).properties[0]
 }
 
 module.exports = createMacro(function traph({ references, state, babel }) {
@@ -62,7 +34,7 @@ module.exports = createMacro(function traph({ references, state, babel }) {
       console.assert(p.value.params[1].name === 'o')
       return [p.key.name, p.value.body]
     })
-    ref.parentPath.replaceWith(funcRetObj(funcs.map(([name, body]) =>
+    ref.parentPath.replaceWithMultiple(funcRetObj(funcs.map(([name, body]) =>
       getter(name, body)
     )))
   })

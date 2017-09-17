@@ -12,10 +12,11 @@
 		"node": ">=7"
 	},
 	"scripts": {
-		"test": "node test.js | node"
+		"build": "mkdir -p dist; babel --plugins ast-literal macro.js > dist/macro.js",
+		"test": "npm run build; node test.js | node"
 	},
 	"files": [
-		"macro.js"
+		"dist/macro.js"
 	],
 	"keywords": [
 		"babel-macro",
@@ -27,5 +28,8 @@
 	"dependencies": {
 		"babel-macros": "^1.0.2"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-plugin-ast-literal": "^0.5.4"
+	}
 }
