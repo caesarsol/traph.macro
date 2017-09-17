@@ -1,0 +1,31 @@
+{
+	"name": "traph.macro",
+	"version": "0.0.1",
+	"description": "JS Babel macro for Object transformation graph",
+	"license": "MIT",
+	"repository": "caesarsol/traph.macro",
+	"author": {
+		"name": "caesarsol",
+		"email": "smilemachine@gmail.com"
+	},
+	"engines": {
+		"node": ">=7"
+	},
+	"scripts": {
+		"test": "node test.js | node"
+	},
+	"files": [
+		"macro.js"
+	],
+	"keywords": [
+		"babel-macro",
+		"object",
+		"transformation",
+		"graph",
+		"traph"
+	],
+	"dependencies": {
+		"babel-macros": "^1.0.2"
+	},
+	"devDependencies": {}
+}
