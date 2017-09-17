@@ -1,6 +1,6 @@
 {
 	"name": "traph.macro",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "JS Babel macro for Object transformation graph",
 	"license": "MIT",
 	"repository": "caesarsol/traph.macro",
