@@ -1,6 +1,6 @@
 /* global expr, stmt */  /* = require('babel-plugin-ast-literal') */
 const t = require('babel-types')
-const { createMacro, MacroError } = require('babel-macros')
+const { createMacro, MacroError } = require('babel-plugin-macros')
 
 function funcRetObj(props) {
   return expr`

@@ -12,22 +12,23 @@
 		"node": ">=7"
 	},
 	"scripts": {
-		"build": "mkdir -p dist; babel --plugins ast-literal macro.js > dist/macro.js",
+		"build": "mkdir -p dist; babel --plugins babel-plugin-macros --plugins ast-literal macro.js > dist/macro.js",
 		"test": "npm run build; node test.js | node"
 	},
+	"main": "./dist/macro.js",
 	"files": [
 		"dist/macro.js"
 	],
 	"keywords": [
-		"babel-macros",
+		"babel-plugin-macros",
 		"object",
 		"transformation",
 		"graph",
 		"traph"
 	],
 	"dependencies": {
-		"babel-macros": "^1.0.2",
-		"babel-plugin-ast-literal": "^0.5.4"
+		"babel-plugin-ast-literal": "^0.5.4",
+		"babel-plugin-macros": "^2.8.0"
 	},
 	"devDependencies": {
 		"babel-cli": "^6.26.0"
