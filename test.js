@@ -32,7 +32,7 @@ const out = require('babel-core').transform(
 
     console.log('All tests passed!')
   `,
-  { plugins: ['babel-macros'] },
+  { plugins: ['babel-plugin-macros'] },
 )
 
 console.log(out.code)
