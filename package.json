@@ -17,7 +17,7 @@
 	},
 	"main": "./dist/macro.js",
 	"files": [
-		"dist/macro"
+		"dist/macro.js"
 	],
 	"keywords": [
 		"babel-plugin-macros",
